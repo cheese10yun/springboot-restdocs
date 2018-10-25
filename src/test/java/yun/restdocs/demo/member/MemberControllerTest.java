@@ -66,13 +66,13 @@ public class MemberControllerTest {
                 .andExpect(status().isOk())
                 .andDo(document.document(
                         pathParameters(
-                                parameterWithName("id").description("Document's id")
+                                parameterWithName("id").description("Member's id")
                         ),
                         responseFields(
-                                fieldWithPath("email.value").description("The user`s email address"),
-                                fieldWithPath("address.city").description("The user`s address city"),
-                                fieldWithPath("address.street").description("The user`s address street"),
-                                fieldWithPath("address.zipCode").description("The user`s address zipCode")
+                                fieldWithPath("email.value").description("The Member's email address"),
+                                fieldWithPath("address.city").description("The Member's address city"),
+                                fieldWithPath("address.street").description("The Member's address street"),
+                                fieldWithPath("address.zipCode").description("The Member's address zipCode")
                         )
                 ))
                 .andExpect(jsonPath("$.email.value", is(notNullValue())))
