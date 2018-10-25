@@ -1,7 +1,6 @@
 package yun.restdocs.demo.member.dto;
 
 import lombok.AccessLevel;
-import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import yun.restdocs.demo.member.Member;
@@ -19,12 +18,6 @@ public class SignUpDto {
 
     @Valid
     private Address address;
-
-    @Builder
-    public SignUpDto(Email email, Address address) {
-        this.email = email;
-        this.address = address;
-    }
 
     public Member toEntity() {
 
