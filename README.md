@@ -202,14 +202,12 @@ public class MemberControllerTest {
 * (2) `responseFields()` 메서드로 reponse 값들에 대한 문서 정의가 가능합니다. 
 
 실제 Document 모습입니다.
-<p algin ="cneter">
-    <img src ="/assets/member-document.png">
-</p>
+
+![](/assets/member-document.png)
 
 기본적으로 `snippets`은 6개가 생성됩니다.
-<p algin ="cneter">
-    <img src ="/assets/target.png">
-</p>
+
+![](/assets/target.png)
 
 기본 `snippets` 6개 이외에도  `path-parameters.adoc`, `response-fields.adoc` 이 추가로 생성된 것을 확인 할 수 있습니다. 이것은 (1), (2) 에서 추가로 문서 작성 코드를 통해서 작성된 것입니다. 해당  `snippets`은 만들지 않더라도 기본적인 문서는 갖출 수 있습니다. **하지만 해당 코드를 작성하면 문서와 코드의 일치 성이 높아집니다.** 
 
