@@ -63,13 +63,13 @@ use of HTTP status codes.
 == Member 조회
 
 include::{snippets}/member-controller-test/get_member/path-parameters.adoc[]
+include::{snippets}/member-controller-test/get_member/http-response.adoc[]
+include::{snippets}/member-controller-test/get_member/response-fields.adoc[]
 include::{snippets}/member-controller-test/get_member/curl-request.adoc[]
 include::{snippets}/member-controller-test/get_member/http-request.adoc[]
-include::{snippets}/member-controller-test/get_member/http-response.adoc[]
 include::{snippets}/member-controller-test/get_member/httpie-request.adoc[]
 include::{snippets}/member-controller-test/get_member/request-body.adoc[]
 include::{snippets}/member-controller-test/get_member/response-body.adoc[]
-include::{snippets}/member-controller-test/get_member/response-fields.adoc[]
 
 == Members 조회
 
