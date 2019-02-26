@@ -1,21 +1,26 @@
 language: java
 jdk:
-- openjdk8
+  - openjdk8
+
+env:
+  global:
+    - CODECOV_TOKEN = 2a792f10-1a81-4cc1-8efc-a24a172e674d
 
 install: true
 
 script: mvn install
 
 before_install:
-- mvn clean
+  - mvn clean
 
 
 branches:
   only:
-  - master
+    - master
 
 after_success:
   - mvn clean test jacoco:report coveralls:report
+  - bash <(curl -s https://codecov.io/bash)
 
 notifications:
   slack: cheese-dev:JXKSTVY4wHsMPbJi2uoKtyxs
