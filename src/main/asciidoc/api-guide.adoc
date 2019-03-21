@@ -4,14 +4,14 @@ Andy Wilkinson;
 :icons: font
 :source-highlighter: highlightjs
 :toc: left
-:toclevels: 4
+:toclevels: 2
 :sectlinks:
 
 [[overview]]
-= Overview
+== Overview
 
 [[overview-http-verbs]]
-== HTTP verbs
+=== HTTP verbs
 
 RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
 use of HTTP verbs.
@@ -33,7 +33,7 @@ use of HTTP verbs.
 |===
 
 [[overview-http-status-codes]]
-== HTTP status codes
+=== HTTP status codes
 
 RESTful notes tries to adhere as closely as possible to standard HTTP and REST conventions in its
 use of HTTP status codes.
@@ -58,42 +58,22 @@ use of HTTP status codes.
 | The requested resource did not exist
 |===
 
-= Member
+== Member
 
-== Member 조회
+=== 회원 조회
+operation::member-controller-test/get_member[snippets='curl-request,http-request,http-response,httpie-request,path-parameters,request-body,response-body,response-fields']
 
-include::{snippets}/member-controller-test/get_member/path-parameters.adoc[]
-include::{snippets}/member-controller-test/get_member/http-response.adoc[]
-include::{snippets}/member-controller-test/get_member/response-fields.adoc[]
-include::{snippets}/member-controller-test/get_member/curl-request.adoc[]
-include::{snippets}/member-controller-test/get_member/http-request.adoc[]
-include::{snippets}/member-controller-test/get_member/httpie-request.adoc[]
-include::{snippets}/member-controller-test/get_member/request-body.adoc[]
-include::{snippets}/member-controller-test/get_member/response-body.adoc[]
+=== 회원 리스트
+operation::member-controller-test/get_members[snippets='curl-request,http-request,http-response,httpie-request,response-body,response-fields']
 
-== Members 조회
-
-include::{snippets}/member-controller-test/get_members/curl-request.adoc[]
-include::{snippets}/member-controller-test/get_members/http-request.adoc[]
-include::{snippets}/member-controller-test/get_members/http-response.adoc[]
-include::{snippets}/member-controller-test/get_members/httpie-request.adoc[]
-include::{snippets}/member-controller-test/get_members/request-body.adoc[]
-include::{snippets}/member-controller-test/get_members/response-body.adoc[]
-include::{snippets}/member-controller-test/get_members/response-fields.adoc[]
+=== 회원가입
+operation::member-controller-test/sign_up[snippets='request-fields,http-request,http-response']
 
 
-== Members 회원가입
-
-=== 성공
-include::{snippets}/member-controller-test/sign_up/curl-request.adoc[]
-include::{snippets}/member-controller-test/sign_up/http-request.adoc[]
-include::{snippets}/member-controller-test/sign_up/http-response.adoc[]
-include::{snippets}/member-controller-test/sign_up/httpie-request.adoc[]
-include::{snippets}/member-controller-test/sign_up/request-body.adoc[]
-include::{snippets}/member-controller-test/sign_up/response-body.adoc[]
 
 
-=== 실패
+
+== 실패
 include::{snippets}/member-controller-test/sign_up_fail/curl-request.adoc[]
 include::{snippets}/member-controller-test/sign_up_fail/http-request.adoc[]
 include::{snippets}/member-controller-test/sign_up_fail/http-response.adoc[]
