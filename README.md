@@ -10,8 +10,8 @@
 - [Rest Docs vs Swagger](#rest-docs-vs-swagger)
 - [pom.xml 설정](#pomxml-설정)
 - [Test Code](#test-code)
-    - [Test Code 설정](#test-code-설정)
-    - [Member 조회 Test Code](#member-조회-test-code)
+  - [Test Code 설정](#test-code-설정)
+  - [Member 조회 Test Code](#member-조회-test-code)
 - [Document 구조 adoc 파일 작성](#document-구조-adoc-파일-작성)
 - [최종 Document](#최종-document)
 - [마무리](#마무리)
@@ -20,7 +20,7 @@
 
 ## REST Docs 소개
 
-Spring REST Docs는 테스트 코드 기반으로 RESTful 문서생성을 돕는 도구로 기본적으로 Asciidoctor를 사용하여 HTML를 생성합니다. Spring MVC 테스트 프레임워크로 생성된 snippet을 사용해서 snippet이 올바르지 않으면 생성된 테스트가 실패하여 정확성을 보장해줍니다.
+Rest Docs는 테스트 코드 기반으로 Restfull API 문서를 돕는 도구입니다. Asciidoctor를 이용해서 HTML 등등 다양한 포맷으로 문서를 자동으로 출력할 수 있습니다. RestDocs의 가장 큰 장점과 다른 문서화 도구의 차이점은 테스트 코드 기반으로 문서를 작성한다는 것입니다. API Spec과 문서화를 위한 테스트 코드가 일치하지 않으면 테스트 빌드를 실패하게 되어 테스트 코드로 검증된 문서를 보장할 수 있습니다.
 
 ## Rest Docs vs Swagger
 우선 Rest Docs과 Swagger는 성격이 많이 다릅니다. Swagger는 RESTful 문서에 대한 명세 보다는 Postman Tool 처럼 특정 API를 쉽게 호출해볼수 있는 것에 초점이 맞춰져있다고 있지않습니다. 다시 말해 Swagger는 API 명세에 대한 기능은 어느정도 제공해주지만 그것은 효율적이지 못하다고 생각합니다. 
