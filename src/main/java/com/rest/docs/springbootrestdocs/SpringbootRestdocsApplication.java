@@ -1,12 +1,13 @@
-package yun.restdocs.demo;
+package com.rest.docs.springbootrestdocs;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Application {
+public class SpringbootRestdocsApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(Application.class, args);
+        SpringApplication.run(SpringbootRestdocsApplication.class, args);
     }
+
 }
