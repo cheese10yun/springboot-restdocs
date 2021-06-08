@@ -6,7 +6,7 @@
 <!-- TOC -->
 
 - [목차](#목차)
-- [REST Docs 소개](#rest-docs-소개)
+- [Rest Docs 소개](#rest-docs-소개)
 - [Rest Docs vs Swagger](#rest-docs-vs-swagger)
 - [pom.xml 설정](#pomxml-설정)
 - [Test Code](#test-code)
@@ -18,12 +18,12 @@
 
 <!-- /TOC -->
 
-## REST Docs 소개
+## Rest Docs 소개
 
-Rest Docs는 테스트 코드 기반으로 Restfull API 문서를 돕는 도구입니다. Asciidoctor를 이용해서 HTML 등등 다양한 포맷으로 문서를 자동으로 출력할 수 있습니다. RestDocs의 가장 큰 장점과 다른 문서화 도구의 차이점은 테스트 코드 기반으로 문서를 작성한다는 것입니다. API Spec과 문서화를 위한 테스트 코드가 일치하지 않으면 테스트 빌드를 실패하게 되어 테스트 코드로 검증된 문서를 보장할 수 있습니다.
+Rest Docs는 테스트 코드 기반으로 Restfull API 문서를 돕는 도구입니다. Asciidoctor를 이용해서 HTML 등등 다양한 포맷으로 문서를 자동으로 출력할 수 있습니다. RestDocs의 가장 큰 장점이자 다른 문서화 도구의 차이점은 테스트 코드 기반으로 문서를 작성한다는 것입니다. API Spec과 문서화를 위한 테스트 코드가 일치하지 않으면 테스트 빌드를 실패하게 되어 테스트 코드로 검증된 문서를 보장할 수 있습니다.
 
 ## Rest Docs vs Swagger
-우선 Rest Docs과 Swagger는 성격이 많이 다릅니다. Swagger는 RESTful 문서에 대한 명세 보다는 Postman Tool 처럼 특정 API를 쉽게 호출해볼수 있는 것에 초점이 맞춰져있다고 있지않습니다. 다시 말해 Swagger는 API 명세에 대한 기능은 어느정도 제공해주지만 그것은 효율적이지 못하다고 생각합니다. 
+우선 Rest Docs과 Swagger는 성격이 많이 다릅니다. Swagger는 RESTful 문서에 대한 명세 보다는 Postman Tool 처럼 특정 API를 쉽게 호출해볼수 있는 것에 초점이 맞춰져있다고 생각합니다. 다시 말해 Swagger는 API 명세에 대한 기능은 어느정도 제공해주지만 그것은 효율적이지 못하다고 생각합니다. 
 
 ```java
 @ApiOperation(value = "View a list of available products", response = Iterable.class)
@@ -49,9 +49,7 @@ Swagger는 RESTful에대한 문서명세를 위와같은 어노테이션 방법�
 * **정상적인 Reponse에 대한 명세 일뿐 status 2xx 이외의 값에 대한 정의가 힘듭니다. 이것을 정의하더라도 주석 형태로 정의하게 되어 결국 시간이 지나면 문서와 코드가 일치하지 않게 됩니다.**
 
 
-제 개인적인 결론은 RESTful API에 대한 명세관점에서는 둘은 비교 대상이 되기 힘들다고 생각합니다. **Rest Docs는 테스트 코드 기반으로 문서가 작성되기 때문에 문서와 실제 코드의 일치성이 높고 테스트코드로 문서가 표현되기 때문에 실제 코드에 어떠한 코드 추가도 필요가 없다는 장점이 있습니다.** Swaager이외에도 실제 자바 주석문으로 RESTful API를 명세하는 서비스도 있지만 결국 문서와 코드의 일치성 등 다양항문제로 현재로써는 Rest Docs가 가장 효율적인 RESTful API 명세 도구라고 생각합니다.
-
-
+제 개인적인 결론은 RESTful API에 대한 명세관점에서는 둘은 비교 대상이 되기 힘들다고 생각합니다. **Rest Docs는 테스트 코드 기반으로 문서가 작성되기 때문에 문서와 실제 코드의 일치성이 높고 테스트코드로 문서가 표현되기 때문에 실제 코드에는 어떠한 코드 추가도 필요가 없다는 장점이 있습니다.** Swaager이외에도 실제 자바 주석문으로 RESTful API를 명세하는 서비스도 있지만 결국 문서와 코드의 일치성 등 다양항문제로 현재로써는 Rest Docs가 가장 효율적인 RESTful API 명세 도구라고 생각합니다.
 
 ## pom.xml 설정
 
@@ -210,13 +208,13 @@ public class MemberControllerTest {
 
 ![](/assets/target.png)
 
-기본 `snippets` 6개 이외에도  `path-parameters.adoc`, `response-fields.adoc` 이 추가로 생성된 것을 확인 할 수 있습니다. 이것은 (1), (2) 에서 추가로 문서 작성 코드를 통해서 작성된 것입니다. 해당  `snippets`은 만들지 않더라도 기본적인 문서는 갖출 수 있습니다. **하지만 해당 코드를 작성하면 문서와 코드의 일치 성이 높아집니다.** 
+기본 `snippets` 6개 이외에도  `path-parameters.adoc`, `response-fields.adoc` 이 추가로 생성된 것을 확인 할 수 있습니다. 이것은 (1), (2) 에서 추가로 작성된 코드를 통해서 작성된 것입니다. 해당 `snippets`은 만들지 않더라도 기본적인 문서는 갖출 수 있습니다. **하지만 해당 코드를 작성하면 문서와 코드의 일치 성이 높아집니다.** 
 
 만약 `fieldWithPath("email.value").description("The Member's email address")` 코드를 주석하고 테스트 코드를 실행하게 되면
 
 ![member-error](/assets/member-error.png)
 
-위의 그림과 같이 해당 페이로드가 문서화 되지 않았다는 메시지오 함께 테스트 코드가 실패하게 됩니다. 물론 `response-body.adoc`으로 매번 response 값이 갱신 되기 때문에 문서와의 일치 성은 보장 받을 수 있습니다. 해당 필드 값에 대한 타입과 정의까지 철저 하게 관리하고 싶으시다면 작성하는것도 좋다고 생각합니다.
+위의 그림과 같이 해당 페이로드가 문서화 되지 않았다는 메시지와 함께 테스트 코드가 실패하게 됩니다. 물론 `response-body.adoc`으로 매번 response 값이 갱신 되기 때문에 문서와의 일치 성은 보장 받을 수 있습니다. 해당 필드 값에 대한 타입과 정의까지 철저 하게 관리하고 싶으시다면 작성하는것도 좋다고 생각합니다.
 
 ## Document 구조 adoc 파일 작성
 
@@ -250,4 +248,4 @@ mvn spring-boot:run
 ![document-main](/assets/document-main.png)
 
 ## 마무리
-Member 조회 이외의 테스트 코드들도 있으니 프로젝트의 전체 코드를 보시는 것이 좋을 거 같습니다. 위에서 언급했듯이 문서와 코드의 지속적인 일치성, 비즈니스 로직을 가리는 과도한 문서화의 코드들이 침입하지 않는 점 등 Rest Docs는 정말 좋은 문서 도구라고 생각합니다. 반드시 테스트 코드를 작성해야 한다는 것도 테스트 코드에 익숙하지 않은 상태에서는 조금은 어렵겠지만 반강제적으로라도 테스트 코드를 작성하게 도와주는 점도 있어 이 또한 큰 장점입니다.
+위에서 언급했듯이 문서와 코드의 지속적인 일치성, 비즈니스 로직을 가리는 과도한 문서화의 코드들이 침입하지 않는 점 등 Rest Docs는 정말 좋은 문서 도구라고 생각합니다. 반드시 테스트 코드를 작성해야 한다는 것도 테스트 코드에 익숙하지 않은 상태에서는 조금은 어렵겠지만 반강제적으로라도 테스트 코드를 작성하게 도와주는 점도 있어 이 또한 큰 장점입니다.
