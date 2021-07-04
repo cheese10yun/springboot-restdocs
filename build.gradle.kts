@@ -1,13 +1,19 @@
 plugins {
     id("org.springframework.boot") version "2.5.2"
     id("io.spring.dependency-management") version "1.0.11.RELEASE"
-    id("org.asciidoctor.convert") version "1.5.8"
+    id("org.asciidoctor.jvm.convert") version "3.1.0"
     id("java")
 }
 
 group = "com.rest.docs.springbootrestdocs"
 version = "0.0.1-SNAPSHOT"
 java.sourceCompatibility = JavaVersion.VERSION_1_8
+
+lateinit var asciidoctorExt: Configuration
+
+asciidoctorj {
+    asciidoctorExt = configurations.create("asciidoctorExt")
+}
 
 configurations {
     compileOnly {
@@ -33,6 +39,15 @@ dependencies {
 
     implementation("io.springfox:springfox-swagger2:2.9.2")
     implementation("io.springfox:springfox-swagger-ui:2.9.2")
+    asciidoctorExt("org.springframework.restdocs:spring-restdocs-asciidoctor")
+}
+
+tasks.bootJar {
+    isEnabled = true
+    dependsOn(tasks.asciidoctor)
+    from("${tasks.asciidoctor.get().outputDir}") {
+        into("static/docs")
+    }
 }
 
 tasks.withType<Test> {
@@ -44,7 +59,11 @@ tasks.test {
 }
 
 tasks.asciidoctor {
-    inputs.dir(snippetsDir)
-    val test by tasks
-    dependsOn(test)
+    dependsOn(tasks.test)
+    val snippets = file("build/generated-snippets")
+    configurations("asciidoctorExt")
+    attributes["snippets"] = snippets
+    inputs.dir(snippets)
+    sources { include("**/index.adoc") }
+    baseDirFollowsSourceFile()
 }

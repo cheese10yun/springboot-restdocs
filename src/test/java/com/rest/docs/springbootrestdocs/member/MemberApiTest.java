@@ -42,7 +42,7 @@ class MemberApiTest {
     }
 
     @Test
-    public void member_조회_테스트() throws Exception {
+    public void member_page_test() throws Exception {
         mockMvc.perform(
             get("/api/members/restdocs")
                 .param("size", "10")
