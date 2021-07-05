@@ -4,19 +4,39 @@ Andy Wilkinson;
 :icons: font
 :source-highlighter: highlightjs
 :toc: left
-:toclevels: 2
+:toclevels: 3
 :sectlinks:
 
-[[member]]
+[[member-api]]
 == Member API
 
 [[member-조회]]
 === member 조회
-include::{snippets}/member-api-test/member_page_test/curl-request.adoc[]
-include::{snippets}/member-api-test/member_page_test/http-request.adoc[]
-include::{snippets}/member-api-test/member_page_test/http-response.adoc[]
-include::{snippets}/member-api-test/member_page_test/httpie-request.adoc[]
-include::{snippets}/member-api-test/member_page_test/request-body.adoc[]
-include::{snippets}/member-api-test/member_page_test/request-parameters.adoc[]
-include::{snippets}/member-api-test/member_page_test/response-body.adoc[]
-include::{snippets}/member-api-test/member_page_test/response-fields.adoc[]
+include::{snippets}/member-api-test/member_get/curl-request.adoc[]
+include::{snippets}/member-api-test/member_get/http-request.adoc[]
+include::{snippets}/member-api-test/member_get/http-response.adoc[]
+include::{snippets}/member-api-test/member_get/httpie-request.adoc[]
+include::{snippets}/member-api-test/member_get/request-body.adoc[]
+include::{snippets}/member-api-test/member_get/response-body.adoc[]
+include::{snippets}/member-api-test/member_get/response-fields.adoc[]
+
+
+[[member-페이지]]
+=== member 페이지
+include::{snippets}/member-api-test/member_page/curl-request.adoc[]
+include::{snippets}/member-api-test/member_page/http-request.adoc[]
+include::{snippets}/member-api-test/member_page/http-response.adoc[]
+include::{snippets}/member-api-test/member_page/httpie-request.adoc[]
+include::{snippets}/member-api-test/member_page/request-body.adoc[]
+include::{snippets}/member-api-test/member_page/response-body.adoc[]
+
+
+[[member-등록]]
+=== member 등록
+include::{snippets}/member-api-test/member_등록/curl-request.adoc[]
+include::{snippets}/member-api-test/member_등록/http-request.adoc[]
+include::{snippets}/member-api-test/member_등록/http-request.adoc[]
+include::{snippets}/member-api-test/member_등록/http-response.adoc[]
+include::{snippets}/member-api-test/member_등록/httpie-request.adoc[]
+include::{snippets}/member-api-test/member_등록/request-body.adoc[]
+include::{snippets}/member-api-test/member_등록/request-fields.adoc[]

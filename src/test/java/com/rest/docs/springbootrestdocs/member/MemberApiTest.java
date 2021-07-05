@@ -1,9 +1,12 @@
 package com.rest.docs.springbootrestdocs.member;
 
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
+import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
@@ -28,6 +31,7 @@ import org.springframework.web.context.WebApplicationContext;
 @ExtendWith(RestDocumentationExtension.class)
 @AutoConfigureMockMvc
 class MemberApiTest {
+
     @Autowired
     private MockMvc mockMvc;
 
@@ -42,9 +46,49 @@ class MemberApiTest {
     }
 
     @Test
-    public void member_page_test() throws Exception {
+    public void restdocs_snippets_확인() throws Exception {
         mockMvc.perform(
-            get("/api/members/restdocs")
+            get("/api/members/{id}", "1")
+                .accept(MediaType.APPLICATION_JSON)
+        )
+            .andDo(print())
+            .andDo(MockMvcRestDocumentation.document("{class-name}/{method-name}"))
+            .andExpect(status().isOk())
+        ;
+
+    }
+
+    @Test
+    public void member_get() throws Exception {
+        mockMvc.perform(
+            get("/api/members/{id}", "1")
+                .accept(MediaType.APPLICATION_JSON)
+        )
+            .andDo(print())
+            .andDo(
+                MockMvcRestDocumentation.document(
+                    "{class-name}/{method-name}",
+                    pathParameters(
+                        parameterWithName("id").description("Member's id")
+                    ),
+                    responseFields(
+                        fieldWithPath("id").description("PK"),
+                        fieldWithPath("email").description("Email"),
+                        fieldWithPath("name").description("Name"),
+                        fieldWithPath("createdAt").description("생성 일시"),
+                        fieldWithPath("updatedAt").description("수정 일시")
+                    )
+                )
+            )
+            .andExpect(status().isOk())
+        ;
+
+    }
+
+    @Test
+    public void member_page() throws Exception {
+        mockMvc.perform(
+            get("/api/members")
                 .param("size", "10")
                 .param("page", "0")
                 .accept(MediaType.APPLICATION_JSON)
@@ -56,17 +100,30 @@ class MemberApiTest {
                     requestParameters(
                         parameterWithName("size").optional().description("size"),
                         parameterWithName("page").optional().description("page")
-                    ),
-                    responseFields(
-                        fieldWithPath("[0].id").description("PK"),
-                        fieldWithPath("[0].email").description("Email"),
-                        fieldWithPath("[0].name").description("Name"),
-                        fieldWithPath("[0].createdAt").description("생성 일시"),
-                        fieldWithPath("[0].updatedAt").description("수정 일시")
                     )
                 )
             )
             .andExpect(status().isOk())
+        ;
+    }
+
+    @Test
+    public void member_등록() throws Exception {
+        mockMvc.perform(
+            post("/api/members")
+                .accept(MediaType.APPLICATION_JSON)
+                .content("{\"name\": \"yun\", \"email\": \"writer@asd.com\"}")
+        )
+            .andDo(print())
+            .andDo(
+                MockMvcRestDocumentation.document(
+                    "{class-name}/{method-name}",
+                    requestFields(
+                        fieldWithPath("name").description("name"),
+                        fieldWithPath("email").description("email")
+                    )
+                )
+            )
         ;
     }
 }
