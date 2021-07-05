@@ -1,0 +1,22 @@
+= REST Docs
+Andy Wilkinson;
+:doctype: book
+:icons: font
+:source-highlighter: highlightjs
+:toc: left
+:toclevels: 2
+:sectlinks:
+
+[[member]]
+== Member API
+
+[[member-조회]]
+=== member 조회
+include::{snippets}/member-api-test/member_page_test/curl-request.adoc[]
+include::{snippets}/member-api-test/member_page_test/http-request.adoc[]
+include::{snippets}/member-api-test/member_page_test/http-response.adoc[]
+include::{snippets}/member-api-test/member_page_test/httpie-request.adoc[]
+include::{snippets}/member-api-test/member_page_test/request-body.adoc[]
+include::{snippets}/member-api-test/member_page_test/request-parameters.adoc[]
+include::{snippets}/member-api-test/member_page_test/response-body.adoc[]
+include::{snippets}/member-api-test/member_page_test/response-fields.adoc[]
