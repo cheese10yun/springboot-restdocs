@@ -43,7 +43,6 @@ dependencies {
 }
 
 tasks.bootJar {
-    isEnabled = true
     dependsOn(tasks.asciidoctor)
     from("${tasks.asciidoctor.get().outputDir}") {
         into("static/docs")
