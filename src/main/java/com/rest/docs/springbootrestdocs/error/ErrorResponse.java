@@ -1,5 +1,6 @@
 package com.rest.docs.springbootrestdocs.error;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -16,13 +17,14 @@ public class ErrorResponse {
     private int status;
     private List<FieldError> errors;
     private String code;
-
+    private LocalDateTime timestamp;
 
     private ErrorResponse(final ErrorCode code, final List<FieldError> errors) {
         this.message = code.getMessage();
         this.status = code.getStatus();
         this.errors = errors;
         this.code = code.getCode();
+        this.timestamp = LocalDateTime.now();
     }
 
     private ErrorResponse(final ErrorCode code) {
@@ -30,8 +32,8 @@ public class ErrorResponse {
         this.status = code.getStatus();
         this.code = code.getCode();
         this.errors = new ArrayList<>();
+        this.timestamp = LocalDateTime.now();
     }
-
 
     public static ErrorResponse of(final ErrorCode code, final BindingResult bindingResult) {
         return new ErrorResponse(code, FieldError.of(bindingResult));
@@ -40,7 +42,6 @@ public class ErrorResponse {
     public static ErrorResponse of(final ErrorCode code) {
         return new ErrorResponse(code);
     }
-
 
     @Getter
     public static class FieldError {

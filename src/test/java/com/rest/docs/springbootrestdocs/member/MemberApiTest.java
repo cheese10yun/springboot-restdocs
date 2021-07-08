@@ -6,44 +6,15 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWit
 import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
-import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-import org.junit.jupiter.api.BeforeEach;
+import com.rest.docs.springbootrestdocs.SpringTestSupport;
 import org.junit.jupiter.api.Test;
-import org.junit.jupiter.api.extension.ExtendWith;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
-import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.http.MediaType;
-import org.springframework.restdocs.RestDocumentationContextProvider;
-import org.springframework.restdocs.RestDocumentationExtension;
-import org.springframework.restdocs.mockmvc.MockMvcRestDocumentation;
-import org.springframework.test.context.TestConstructor;
-import org.springframework.test.web.servlet.MockMvc;
-import org.springframework.test.web.servlet.setup.MockMvcBuilders;
-import org.springframework.web.context.WebApplicationContext;
 
-@SpringBootTest
-@TestConstructor(autowireMode = TestConstructor.AutowireMode.ALL)
-@ExtendWith(RestDocumentationExtension.class)
-@AutoConfigureMockMvc
-class MemberApiTest {
-
-    @Autowired
-    private MockMvc mockMvc;
-
-    @BeforeEach
-    public void setUp(
-        WebApplicationContext webApplicationContext,
-        RestDocumentationContextProvider provider
-    ) {
-        this.mockMvc = MockMvcBuilders.webAppContextSetup(webApplicationContext)
-            .apply(MockMvcRestDocumentation.documentationConfiguration(provider))
-            .build();
-    }
+class MemberApiTest extends SpringTestSupport {
 
     @Test
     public void restdocs_snippets_확인() throws Exception {
@@ -51,11 +22,8 @@ class MemberApiTest {
             get("/api/members/{id}", "1")
                 .accept(MediaType.APPLICATION_JSON)
         )
-            .andDo(print())
-            .andDo(MockMvcRestDocumentation.document("{class-name}/{method-name}"))
             .andExpect(status().isOk())
         ;
-
     }
 
     @Test
@@ -64,13 +32,8 @@ class MemberApiTest {
             get("/api/members/{id}", "1")
                 .accept(MediaType.APPLICATION_JSON)
         )
-            .andDo(print())
             .andDo(
-                MockMvcRestDocumentation.document(
-                    "{class-name}/{method-name}",
-                    pathParameters(
-                        parameterWithName("id").description("Member's id")
-                    ),
+                restDocs.document(
                     responseFields(
                         fieldWithPath("id").description("PK"),
                         fieldWithPath("email").description("Email"),
@@ -93,10 +56,8 @@ class MemberApiTest {
                 .param("page", "0")
                 .accept(MediaType.APPLICATION_JSON)
         )
-            .andDo(print())
             .andDo(
-                MockMvcRestDocumentation.document(
-                    "{class-name}/{method-name}",
+                restDocs.document(
                     requestParameters(
                         parameterWithName("size").optional().description("size"),
                         parameterWithName("page").optional().description("page")
@@ -116,8 +77,7 @@ class MemberApiTest {
         )
             .andDo(print())
             .andDo(
-                MockMvcRestDocumentation.document(
-                    "{class-name}/{method-name}",
+                restDocs.document(
                     requestFields(
                         fieldWithPath("name").description("name"),
                         fieldWithPath("email").description("email")
