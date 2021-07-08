@@ -17,7 +17,6 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/api/members")
 @AllArgsConstructor
 public class MemberApi {
-
     private final MemberRepository memberRepository;
 
     @GetMapping("/{id}")
@@ -26,10 +25,10 @@ public class MemberApi {
     }
 
     @GetMapping
-    public PageResponse<Member> getMembers(
+    public PageResponse<MemberResponse> getMembers(
         @PageableDefault(sort = "id", direction = Direction.DESC) Pageable pageable
     ) {
-        return new PageResponse<>(memberRepository.findAll(pageable));
+        return new PageResponse<>(memberRepository.findAll(pageable).map(MemberResponse::new));
     }
 
     @PostMapping
