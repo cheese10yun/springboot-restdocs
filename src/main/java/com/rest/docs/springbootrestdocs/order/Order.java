@@ -1,5 +1,6 @@
-package com.rest.docs.springbootrestdocs.member;
+package com.rest.docs.springbootrestdocs.order;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -11,25 +12,26 @@ import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.DynamicUpdate;
 import org.hibernate.annotations.UpdateTimestamp;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
-@Table(name = "member")
+@Table(name = "orders")
 @Getter
 @NoArgsConstructor(access = AccessLevel.PROTECTED)
-public class Member {
+public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "email", nullable = false, unique = true)
-    private String email;
+    @Column(name = "member_id", nullable = false)
+    private Long memberId;
 
-    @Column(name = "name", nullable = false)
-    private String name;
+    @Column(name = "amount", nullable = false)
+    private BigDecimal amount;
 
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
@@ -39,10 +41,8 @@ public class Member {
     @Column(name = "updated_at", nullable = false)
     private LocalDateTime updatedAt;
 
-    public Member(String email, String name) {
-        this.email = email;
-        this.name = name;
-//        this.createdAt = LocalDateTime.now();
-//        this.updatedAt = createdAt;
+    public Order(Long memberId, BigDecimal amount) {
+        this.memberId = memberId;
+        this.amount = amount;
     }
 }
