@@ -8,7 +8,6 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.requestF
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
 import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
-import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import com.rest.docs.springbootrestdocs.SpringTestSupport;
@@ -40,6 +39,7 @@ class MemberApiTest extends SpringTestSupport {
                         fieldWithPath("id").description("PK"),
                         fieldWithPath("email").description("Email"),
                         fieldWithPath("name").description("Name"),
+                        fieldWithPath("status").description("회원상태"),
                         fieldWithPath("createdAt").description("생성 일시"),
                         fieldWithPath("updatedAt").description("수정 일시")
                     )

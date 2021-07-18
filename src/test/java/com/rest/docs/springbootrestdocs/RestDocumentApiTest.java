@@ -1,6 +1,7 @@
 package com.rest.docs.springbootrestdocs;
 
 
+import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.get;
 import static org.springframework.restdocs.mockmvc.RestDocumentationRequestBuilders.post;
 import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWithPath;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
@@ -10,6 +11,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
 
 public class RestDocumentApiTest extends SpringTestSupport {
+
+    private final String BASE_URL = "/test";
 
     @Test
     public void requestBodyTest() throws Exception {
@@ -33,5 +36,16 @@ public class RestDocumentApiTest extends SpringTestSupport {
                     )
                 )
             );
+    }
+
+    @Test
+    void MemberStatus() throws Exception {
+        request(BASE_URL + "/MemberStatus");
+    }
+
+    private void request(String urlTemplate) throws Exception {
+        mockMvc.perform(get(urlTemplate)
+            .contentType(MediaType.APPLICATION_JSON))
+            .andExpect(status().isOk());
     }
 }
