@@ -1,0 +1,22 @@
+[[member-api]]
+== Member API
+
+[[member-조회]]
+=== member 조회
+
+operation::member-api-test/member_get[snippets='http-request,path-parameters,http-response,response-fields']
+
+[[member-페이지]]
+=== member 페이지
+
+operation::member-api-test/member_page[snippets='http-request,request-parameters,http-response']
+
+[[member-등록]]
+=== member 등록
+
+operation::member-api-test/member_등록[snippets='request-fields,http-request,http-response']
+
+[[member-상태-변경]]
+=== member 상태 변경
+
+operation::member-api-test/member_status_변경[snippets='request-fields,http-request,http-response']

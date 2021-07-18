@@ -1,0 +1,7 @@
+[[Code]]
+== Code
+
+[[code-MemberStatus]]
+=== MemberStatus
+
+include::{snippets}/rest-document-api-test/member-status/response-body.adoc[]
