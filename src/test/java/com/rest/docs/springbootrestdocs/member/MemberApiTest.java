@@ -7,6 +7,7 @@ import static org.springframework.restdocs.payload.PayloadDocumentation.fieldWit
 import static org.springframework.restdocs.payload.PayloadDocumentation.requestFields;
 import static org.springframework.restdocs.payload.PayloadDocumentation.responseFields;
 import static org.springframework.restdocs.request.RequestDocumentation.parameterWithName;
+import static org.springframework.restdocs.request.RequestDocumentation.pathParameters;
 import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -35,8 +36,11 @@ class MemberApiTest extends SpringTestSupport {
             .andExpect(status().isOk())
             .andDo(
                 restDocs.document(
+                    pathParameters(
+                        parameterWithName("id").description("Member id")
+                    ),
                     responseFields(
-                        fieldWithPath("id").description("PK"),
+                        fieldWithPath("id").description("Member id"),
                         fieldWithPath("email").description("Email"),
                         fieldWithPath("name").description("Name"),
                         fieldWithPath("status").description("회원상태"),
@@ -98,6 +102,9 @@ class MemberApiTest extends SpringTestSupport {
             .andExpect(status().isOk())
             .andDo(
                 restDocs.document(
+                    pathParameters(
+                        parameterWithName("id").description("Member id")
+                    ),
                     requestFields(
                         fieldWithPath("status").description("회원 상태")
                     )
