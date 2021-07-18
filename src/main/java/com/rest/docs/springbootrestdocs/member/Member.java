@@ -3,6 +3,8 @@ package com.rest.docs.springbootrestdocs.member;
 import java.time.LocalDateTime;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,8 +14,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.springframework.data.annotation.CreatedDate;
-import org.springframework.data.annotation.LastModifiedDate;
 
 @Entity
 @Table(name = "member")
@@ -31,6 +31,10 @@ public class Member {
     @Column(name = "name", nullable = false)
     private String name;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status", nullable = false)
+    private MemberStatus status;
+
     @CreationTimestamp
     @Column(name = "created_at", nullable = false, updatable = false)
     private LocalDateTime createdAt;
@@ -42,7 +46,10 @@ public class Member {
     public Member(String email, String name) {
         this.email = email;
         this.name = name;
-//        this.createdAt = LocalDateTime.now();
-//        this.updatedAt = createdAt;
+        this.status = MemberStatus.NORMAL;
+    }
+
+    public void updateStatus(final MemberStatus status){
+        this.status = status;
     }
 }

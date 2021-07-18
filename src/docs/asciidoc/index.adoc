@@ -64,3 +64,9 @@ operation::member-api-test/member_page[snippets='http-request,request-parameters
 === member 등록
 
 operation::member-api-test/member_등록[snippets='request-fields,http-request,http-response']
+
+
+[[member-상태-변경]]
+=== member 상태 변경
+
+operation::member-api-test/member_status_변경[snippets='request-fields,http-request,http-response']
