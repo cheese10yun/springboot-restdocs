@@ -1,10 +1,9 @@
 |===
-|Field|Type|Required|Format|Description|Length
+|Field|Type|Required|Description|Length
 {{#fields}}
 |{{#tableCellContent}}`+{{path}}+`{{/tableCellContent}}
 |{{#tableCellContent}}`+{{type}}+`{{/tableCellContent}}
 |{{#tableCellContent}}{{^optional}}true{{/optional}}{{/tableCellContent}}
-|{{#tableCellContent}}{{#format}}{{.}}{{/format}}{{/tableCellContent}}
 |{{#tableCellContent}}{{description}}{{/tableCellContent}}
 |{{#tableCellContent}}{{#length}}{{.}}{{/length}}{{/tableCellContent}}
 {{/fields}}
