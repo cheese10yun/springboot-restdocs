@@ -2,15 +2,16 @@ package com.rest.docs.springbootrestdocs.member;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
-import lombok.AllArgsConstructor;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
 @Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MemberRegistrationRequest {
 
     @NotEmpty
-    private final String name;
+    private String name;
     @Email
-    private final String email;
+    private String email;
 }

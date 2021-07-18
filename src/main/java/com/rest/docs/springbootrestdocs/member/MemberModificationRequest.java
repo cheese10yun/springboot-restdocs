@@ -1,11 +1,14 @@
 package com.rest.docs.springbootrestdocs.member;
 
-import lombok.AllArgsConstructor;
+import javax.validation.constraints.NotNull;
+import lombok.AccessLevel;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
-@AllArgsConstructor
 @Getter
+@NoArgsConstructor(access = AccessLevel.PRIVATE)
 public class MemberModificationRequest {
 
-    private final MemberStatus status;
+    @NotNull
+    private MemberStatus status;
 }

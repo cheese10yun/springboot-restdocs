@@ -33,6 +33,7 @@ class MemberApiTest extends SpringTestSupport {
             get("/api/members/{id}", "1")
                 .contentType(MediaType.APPLICATION_JSON)
         )
+            .andExpect(status().isOk())
             .andDo(
                 restDocs.document(
                     responseFields(
@@ -44,7 +45,6 @@ class MemberApiTest extends SpringTestSupport {
                     )
                 )
             )
-            .andExpect(status().isOk())
         ;
 
     }
@@ -57,6 +57,7 @@ class MemberApiTest extends SpringTestSupport {
                 .param("page", "0")
                 .contentType(MediaType.APPLICATION_JSON)
         )
+            .andExpect(status().isOk())
             .andDo(
                 restDocs.document(
                     requestParameters(
@@ -65,7 +66,6 @@ class MemberApiTest extends SpringTestSupport {
                     )
                 )
             )
-            .andExpect(status().isOk())
         ;
     }
 
@@ -76,7 +76,7 @@ class MemberApiTest extends SpringTestSupport {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content("{\"name\": \"yun\", \"email\": \"writer@asd.com\"}")
         )
-            .andDo(print())
+            .andExpect(status().isOk())
             .andDo(
                 restDocs.document(
                     requestFields(
@@ -93,8 +93,9 @@ class MemberApiTest extends SpringTestSupport {
         mockMvc.perform(
             put("/api/members/{id}", 1)
                 .contentType(MediaType.APPLICATION_JSON)
-                .content("{\"status\": \"BAN\"}")
+                .content("{\"status\": \"LOCK\"}")
         )
+            .andExpect(status().isOk())
             .andDo(
                 restDocs.document(
                     requestFields(
