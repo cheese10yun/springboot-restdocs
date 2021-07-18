@@ -11,6 +11,7 @@ import static org.springframework.restdocs.request.RequestDocumentation.pathPara
 import static org.springframework.restdocs.request.RequestDocumentation.requestParameters;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
+import com.rest.docs.springbootrestdocs.RestDocsConfiguration;
 import com.rest.docs.springbootrestdocs.SpringTestSupport;
 import org.junit.jupiter.api.Test;
 import org.springframework.http.MediaType;
@@ -83,10 +84,12 @@ class MemberApiTest extends SpringTestSupport {
             .andExpect(status().isOk())
             .andDo(
                 restDocs.document(
+                    //@formatter:off
                     requestFields(
-                        fieldWithPath("name").description("name"),
-                        fieldWithPath("email").description("email")
+                        fieldWithPath("name").description("name").attributes(RestDocsConfiguration.column("length", "10")),
+                        fieldWithPath("email").description("email").attributes(RestDocsConfiguration.column("length", "123"))
                     )
+                    //@formatter:on
                 )
             )
         ;
