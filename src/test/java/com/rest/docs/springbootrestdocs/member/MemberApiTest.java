@@ -86,8 +86,8 @@ class MemberApiTest extends SpringTestSupport {
                 restDocs.document(
                     //@formatter:off
                     requestFields(
-                        fieldWithPath("name").description("name").attributes(RestDocsConfiguration.column("length", "10")),
-                        fieldWithPath("email").description("email").attributes(RestDocsConfiguration.column("length", "123"))
+                        fieldWithPath("name").description("name").attributes(RestDocsConfiguration.field("length", "10")),
+                        fieldWithPath("email").description("email").attributes(RestDocsConfiguration.field("length", "123"))
                     )
                     //@formatter:on
                 )

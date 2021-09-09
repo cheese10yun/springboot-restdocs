@@ -20,7 +20,7 @@ public class RestDocsConfiguration {
         );
     }
 
-    public static final Attributes.Attribute column(
+    public static final Attributes.Attribute field(
         final String key,
         final String value
     ) {
