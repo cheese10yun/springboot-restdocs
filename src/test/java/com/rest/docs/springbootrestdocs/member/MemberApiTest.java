@@ -43,10 +43,7 @@ class MemberApiTest extends SpringTestSupport {
                     responseFields(
                         fieldWithPath("id").description("Member id"),
                         fieldWithPath("email").description("Email"),
-                        fieldWithPath("name").description("Name"),
-                        fieldWithPath("status").description("회원상태"),
-                        fieldWithPath("createdAt").description("생성 일시"),
-                        fieldWithPath("updatedAt").description("수정 일시")
+                        fieldWithPath("nickname").description("Name")
                     )
                 )
             )
